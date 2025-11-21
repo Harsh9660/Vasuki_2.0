@@ -1,10 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/health/')
+      .then(res => res.json())
+      .then(data => setMessage(data.message))
+      .catch(err => console.error(err))
+  }, [])
 
   return (
     <>
@@ -16,7 +24,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Vite + React + Django</h1>
+      {message && <p style={{ color: 'green', fontWeight: 'bold' }}>Backend says: {message}</p>}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
