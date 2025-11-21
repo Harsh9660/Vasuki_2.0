@@ -1,16 +1,53 @@
-# React + Vite
+# Vasuki 2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vasuki 2.0 is a professional-grade chatbot application built with a modern tech stack.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend**: React + Vite + Tailwind CSS
+- **Backend**: Django + Django Rest Framework (Python)
+- **Containerization**: Docker + Docker Compose
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+Vasuki_2.0/
+├── backend/                # Django Backend
+│   ├── api/                # API App
+│   ├── vasuki_backend/     # Project Settings
+│   ├── Dockerfile          # Backend Dockerfile
+│   └── requirements.txt    # Python Dependencies
+├── src/                    # React Frontend Source
+├── public/                 # Static Assets
+├── Dockerfile              # Frontend Dockerfile
+├── docker-compose.yml      # Docker Compose Configuration
+└── package.json            # Node.js Dependencies
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Docker and Docker Compose installed on your machine.
+
+### Running the Application
+
+1. **Clone the repository** (if applicable) or navigate to the project directory.
+
+2. **Start the application using Docker Compose**:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the Application**:
+   - Frontend: [http://localhost:5173](http://localhost:5173)
+   - Backend API: [http://localhost:8000](http://localhost:8000)
+
+### Development
+
+- **Frontend**: The frontend container supports hot module replacement (HMR). Changes in `src/` will be reflected immediately.
+- **Backend**: The backend container mounts the code as a volume, so changes in `backend/` will trigger a server reload.
+
+## API Endpoints
+
+- `GET /api/health/`: Health check endpoint. Returns `{"status": "ok", "message": "Vasuki 2.0 Backend is running!"}`.
